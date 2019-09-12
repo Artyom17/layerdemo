@@ -441,11 +441,12 @@ function prepForQuad() {
               return boxNode;
             }
             if (planeNode == null) {
-              planeNode = makePlane(2.0, 0, -1.3, 0.0, 0.0, 0.0);
+              planeNode = makePlane(20.0, 0, -1.3, 0.0, 0.0, 0.0);
             }
-            scene.addNode(planeNode);
             mat4.identity(planeNode.matrix);
-            mat4.translate(planeNode.matrix, planeNode.matrix, [-1.0, 1.6, -4]);
+            mat4.rotateY(planeNode.matrix, planeNode.matrix, Math.PI/2);
+            mat4.translate(planeNode.matrix, planeNode.matrix, [-1.0, 1.6, -40]);
+//            scene.addNode(planeNode);
           }
         }
       }
@@ -470,8 +471,9 @@ function drawImage(tex, texw, texh, projectionMat, modelViewMat_) {
     // because we want to render directly in front of the users face no matter
     // where they are looking.
     mat4.identity(modelViewMat);
-    mat4.scale(modelViewMat, modelViewMat, [3*5, 1.8*5, 1.0]);
-    mat4.translate(modelViewMat, modelViewMat, [0, 0, -5]);
+    mat4.rotateY(modelViewMat, modelViewMat, -Math.PI/3);
+    mat4.scale(modelViewMat, modelViewMat, [3*5*3, 1.8*5*3, 1.0]);
+    mat4.translate(modelViewMat, modelViewMat, [0, 0, -15]);
 //    mat4.inverse(modelViewMat_, modelViewMat_);
     mat4.multiply(modelViewMat, modelViewMat_, modelViewMat);
 
